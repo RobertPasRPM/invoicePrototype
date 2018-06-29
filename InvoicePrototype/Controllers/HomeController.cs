@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
+using InvoicePrototype.DataAccess;
 
 namespace InvoicePrototype.Controllers
 {
@@ -11,11 +12,8 @@ namespace InvoicePrototype.Controllers
     {
         public ActionResult Index()
         {
-            var mvcName = typeof(Controller).Assembly.GetName();
-            var isMono = Type.GetType("Mono.Runtime") != null;
-
-            ViewData["Version"] = mvcName.Version.Major + "." + mvcName.Version.Minor;
-            ViewData["Runtime"] = isMono ? "Mono" : ".NET";
+            var dataAccess=new JsonDataAccess();
+            var items = dataAccess.GetData();
 
             return View();
         }
