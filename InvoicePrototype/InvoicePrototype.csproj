@@ -103,6 +103,7 @@
     <Content Include="Web.config" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
+    <Content Include="Content\material-components-web.min.css" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DataAccess\Mockups\MOCK_DATA-2.json" />

@@ -1,1 +1,14 @@
-﻿<h2>Welcome to ASP.NET MVC @ViewData["Version"] on @ViewData["Runtime"]!</h2>
+﻿@model IEnumerable<InvoicePrototype.Models.Item>
+<ul class="mdc-list mdc-list--two-line" style="max-height:300px;overflow:scroll;width:30%;">
+    @foreach(var item in Model){
+        <li class="mdc-list-item" id="@item.Id"> 
+            <span class="mdc-list-item__text">
+                @item.Description
+                <span class="mdc-list-item__secondary-text">
+                @item.UnitPrice
+                </span>
+            </span>
+        </li>
+    }
+    <li class="mdc-list selectedItems"></li>
+</ul>

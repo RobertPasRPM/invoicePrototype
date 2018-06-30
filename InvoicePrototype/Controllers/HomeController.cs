@@ -19,10 +19,9 @@ namespace InvoicePrototype.Controllers
 
         public ActionResult Index()
         {
-            var _dataAccess = new JsonDataAccess();
             var items = _dataAccess.GetData();
 
-            return View();
+            return View(items);
         }
     }
 }
