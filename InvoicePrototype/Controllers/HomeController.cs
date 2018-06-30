@@ -10,10 +10,17 @@ namespace InvoicePrototype.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IDataAccess _dataAccess;
+
+        public HomeController(IDataAccess dataAccess)
+        {
+            _dataAccess = dataAccess;
+        }
+
         public ActionResult Index()
         {
-            var dataAccess=new JsonDataAccess();
-            var items = dataAccess.GetData();
+            var _dataAccess = new JsonDataAccess();
+            var items = _dataAccess.GetData();
 
             return View();
         }
