@@ -12,8 +12,23 @@
         </li>
     }
 </ul>
-<div id="selectedItems" style="float:left;width:70%;">
+<div style="float:left;width:70%;">
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Tax (%)</th>
+                <th>Total Tax</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="selectedItems">
 @{
     Html.RenderPartial("InvoiceTable");   
 }
+        </tbody>
+    </table>
 </div>

@@ -28,7 +28,9 @@ namespace InvoicePrototype.Controllers
         }
 
         public ActionResult InvoiceTable(string itemId){
+            var item = _dataAccess.GetItem(Int32.Parse(itemId));
             var viewModel = new FullAndPartialViewModel();
+            viewModel.InvoiceRow = item;
             return PartialView(viewModel);
         }
     }
