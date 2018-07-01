@@ -6,6 +6,6 @@ namespace InvoicePrototype.Models
     public class FullAndPartialViewModel
     {
         public IEnumerable<Item> Items { get; set; }
-        public Item InvoiceRow { get; set; }
+        public IEnumerable<Item> InvoiceRows { get; set; }
     }
 }

@@ -27,10 +27,22 @@ namespace InvoicePrototype.Controllers
             return View(viewModel);
         }
 
-        public ActionResult InvoiceTable(string itemId){
-            var item = _dataAccess.GetItem(Int32.Parse(itemId));
+        public ActionResult InvoiceTable(string itemIds){
+            var items = new List<Item>();
+            var ids = itemIds.Split(';');
+            var index = 1;
+            foreach(var id in ids){
+                var innerId = 0;
+                if(Int32.TryParse(id,out innerId)){
+                    var item = _dataAccess.GetItem(innerId);
+                    item.Index = index;
+                    items.Add(item);
+                    index += 1;
+                }
+            }
+
             var viewModel = new FullAndPartialViewModel();
-            viewModel.InvoiceRow = item;
+            viewModel.InvoiceRows = items;
             return PartialView(viewModel);
         }
     }

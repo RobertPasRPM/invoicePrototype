@@ -5,11 +5,15 @@
         }
         else{
             $(this).addClass("mdc-list-item--selected");
-            var itemId = $(this).attr("id");
+            var listOfItems=$(".mdc-list-item--selected");
+            var itemIds="";
+            for(var index=0;index<listOfItems.length;index++){
+                itemIds=itemIds+$(listOfItems[index]).attr("id") + ";";
+            }
             $.ajax({
-                url: 'Home/InvoiceTable?itemId=' + itemId,
+                url: 'Home/InvoiceTable?itemIds=' + itemIds,
                 success: function (response) {               
-                    $("#selectedItems").append(response);
+                    $("#selectedItems").html(response);
                     }
                 });
         }
