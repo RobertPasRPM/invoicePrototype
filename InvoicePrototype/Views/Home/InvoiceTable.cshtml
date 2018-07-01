@@ -2,13 +2,32 @@
 @if(Model.InvoiceRows!=null){
 foreach(var item in Model.InvoiceRows){
 <tr>
-    <td style="text-align:center;">@item.Index</td>
-    <td style="text-align:center;">@item.Description</td>
-    <td style="text-align:center;">@item.Quantity</td>
-    <td style="text-align:center;">@item.UnitPrice</td>
-    <td style="text-align:center;">@item.Tax</td>
-    <td style="text-align:center;">@item.TotalTax </td>
-    <td style="text-align:center;">@item.Total</td>
+    <td>@item.Index</td>
+    <td>@item.Description</td>
+    <td><input class="quantity" id="@item.Index" type="number" value="@item.Quantity"/></td>
+    <td>@item.UnitPrice</td>
+    <td>@item.Tax</td>
+    <td>@item.TotalTax </td>
+    <td>@item.Total</td>
 </tr>
 }
 }
+<tr id="totalRow">
+    <td></td>
+    <td>Total</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>@Model.TotalTax</td>
+    <td>@Model.Total</td>
+</tr>
+<tr>
+    <td colspan="4" style="border:none;"></td>
+    <td colspan="2"><b>Discount/Voucher</b></td>
+    <td><b>@Model.Discount</b></td>
+</tr>
+<tr>
+    <td colspan="4" style="border:none;"></td>
+    <td colspan="2"><b>Amount to pay</b></td>
+    <td><b>@Model.AmountToPay</b></td>
+</tr>

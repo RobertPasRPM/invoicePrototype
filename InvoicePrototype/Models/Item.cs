@@ -6,7 +6,7 @@ namespace InvoicePrototype.Models
     {
         public int Id { get; set; }
         public int Index { get; set; }
-        public int Quantity { get; set; }= 1;
+        public int Quantity { get; set; } = 1;
         public string Description { get; set; }
         [JsonProperty("unit_price")]
         public decimal UnitPrice { get; set; }
@@ -17,5 +17,6 @@ namespace InvoicePrototype.Models
         public bool IsPromotionItem { get; set; }
         [JsonProperty("promotion_discount")]
         public int PromotionDiscount { get; set; }
+        public decimal Discount => IsPromotionItem ? (UnitPrice * PromotionDiscount) / 100 * Quantity : 0;
     }
 }
