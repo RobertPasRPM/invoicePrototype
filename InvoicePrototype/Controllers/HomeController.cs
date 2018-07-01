@@ -37,7 +37,7 @@ namespace InvoicePrototype.Controllers
             foreach(var id in ids){
                 var innerId = 0;
                 var quantity = 1;
-                var tempVariable = "";
+                var tempVariable = string.Empty;
 
                 if(id.Contains("-")){
                     quantity = Int32.Parse(id.Split('-')[1]);
@@ -76,6 +76,11 @@ namespace InvoicePrototype.Controllers
             viewModel.Total = total;
             viewModel.Discount = discount;
             return PartialView(viewModel);
+        }
+
+        public ActionResult GenerateInvoice(string invoiceTable){
+            ViewBag.InvoiceTable = invoiceTable;
+            return View("InvoiceTemplate");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿var selectedItems="";
+﻿var selectedItems=[];
 var itemIds="";
 
 $(document).ready(function(){
@@ -8,29 +8,30 @@ $(document).ready(function(){
         }
         else{
             $(this).addClass("mdc-list-item--selected");
-            selectedItems=$(".mdc-list-item--selected");
-            for(var index=0;index<selectedItems.length;index++){
-                itemIds = itemIds + $(selectedItems[index]).attr("id") + ";";
-            }
-            $.ajax({
-                url: 'Home/InvoiceTable?itemIds=' + itemIds,
-                success: function (response) {
-                $("#selectedItems").html(response);
-                    $(".quantity").change(function(){
-                        changeQuantity($(this).attr("id"), $(this).val())
-                    });
-                    }
-                });
+            selectedItems.push($(this));
+            itemIds = itemIds + $(this).attr("id") + ";";
+            refreshInvoiceTable();
         }
     });
 
+    $("#generateInvoice").click(function(){
+        var urlGenerate="Home/GenerateInvoice";
+        window.location.href=urlGenerate;
+    });
 });
 
 function changeQuantity(id,value){
-    if(itemIds.indexOf(id+"-")!=-1){
-
+    if(itemIds.includes(id+"-")){
+        var innerItemIds=itemIds.split(';');
+        for(var index=0;index<innerItemIds.length;index++){
+            if(innerItemIds[index].indexOf(id+"-")!=-1){
+                var previousQuantity=innerItemIds[index].split("-")[1];
+                itemIds=itemIds.replace(id+"-"+previousQuantity,id+"-"+value);
+            }
+        }
     }
-    else{
+    else
+    {
     itemIds=itemIds.replace(id+";",id+"-"+value+";");
     }
     refreshInvoiceTable();
