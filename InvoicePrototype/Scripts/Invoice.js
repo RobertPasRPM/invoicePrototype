@@ -21,7 +21,7 @@ $(document).ready(function(){
 });
 
 function changeQuantity(id,value){
-    if(itemIds.includes(id+"-")){
+    if(itemIds.indexOf(id+"-")!=-1){
         var innerItemIds=itemIds.split(';');
         for(var index=0;index<innerItemIds.length;index++){
             if(innerItemIds[index].indexOf(id+"-")!=-1){

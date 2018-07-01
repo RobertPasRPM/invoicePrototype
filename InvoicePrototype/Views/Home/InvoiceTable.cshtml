@@ -4,7 +4,7 @@ foreach(var item in Model.InvoiceRows){
 <tr>
     <td>@item.Index</td>
     <td>@item.Description</td>
-    <td><input class="quantity" id="@item.Index" type="number" value="@item.Quantity"/></td>
+    <td><input class="quantity" id="@item.Id" type="number" value="@item.Quantity"/></td>
     <td>@item.UnitPrice</td>
     <td>@item.Tax</td>
     <td>@item.TotalTax </td>

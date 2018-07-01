@@ -20,7 +20,7 @@ namespace InvoicePrototype.Controllers
 
         public ActionResult Index()
         {
-            var items = _dataAccess.GetData();
+            var items = _dataAccess.GetData<Item>("DataAccess/Mockups/Items.json");
             var viewModel = new FullAndPartialViewModel();
             viewModel.Items = items;
 
@@ -47,7 +47,7 @@ namespace InvoicePrototype.Controllers
                 }
 
                 if(Int32.TryParse(tempVariable, out innerId)){
-                    var item = _dataAccess.GetItem(innerId);
+                    var item = _dataAccess.GetItem<Item>("DataAccess/Mockups/Items.json",innerId);
                     if(quantity!=1){
                         item = new Item()
                         {
@@ -73,14 +73,22 @@ namespace InvoicePrototype.Controllers
             var viewModel = new FullAndPartialViewModel();
             viewModel.InvoiceRows = items;
             viewModel.TotalTax = totalTax;
-            viewModel.Total = total;
-            viewModel.Discount = discount;
+            ProcessTotal(viewModel, total, discount);
             return PartialView(viewModel);
         }
 
         public ActionResult GenerateInvoice(string invoiceTable){
             ViewBag.InvoiceTable = invoiceTable;
             return View("InvoiceTemplate");
+        }
+
+        private void ProcessTotal(FullAndPartialViewModel viewModel, decimal total, decimal discount){
+            var rangeList = _dataAccess.GetData<RangeAndDiscount>("DataAccess/Mockups/RangeList.json");
+            var closest = rangeList.Aggregate((x, y) => Math.Abs(x.Range - total) < Math.Abs(y.Range - total) ? x : y);
+            var rangeDiscount = (total * closest.Discount) / 100;
+            total = total - rangeDiscount;
+            viewModel.Total = total;
+            viewModel.Discount = discount+rangeDiscount;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace InvoicePrototype.DataAccess
 {
     public interface IDataAccess
     {
-        IEnumerable<Item> GetData();
-        Item GetItem(int itemId);
+        IEnumerable<T> GetData<T>(string location);
+        T GetItem<T>(string location, int itemId) where T : Item;
     }
 }

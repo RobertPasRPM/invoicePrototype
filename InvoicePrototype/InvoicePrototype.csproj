@@ -94,6 +94,7 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Models\FullAndPartialViewModel.cs" />
+    <Compile Include="Models\RangeAndDiscount.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
@@ -111,7 +112,8 @@
     <Content Include="Views\Home\InvoiceTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DataAccess\Mockups\MOCK_DATA-2.json" />
+    <None Include="DataAccess\Mockups\Items.json" />
+    <None Include="DataAccess\Mockups\RangeList.json" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
