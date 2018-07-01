@@ -1,0 +1,32 @@
+﻿@model InvoicePrototype.Models.FullAndPartialViewModel
+
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Tax (%)</th>
+                <th>Total Tax</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model.InvoiceRows!=null){
+            foreach(var item in Model.InvoiceRows){
+                <tr>
+                    <td>
+                        <div>@item.Index</div>
+                        <div>@item.Description</div>
+                        <div>@item.Quantity</div>
+                        <div>@item.UnitPrice</div>
+                        <div>@item.Tax</div>
+                        <div>@(item.Tax * item.Quantity) </div>
+                        <div>@(item.Quantity * item.UnitPrice)</div>
+                    </td>
+                </tr>
+            }
+            }
+        </tbody>
+    </table>

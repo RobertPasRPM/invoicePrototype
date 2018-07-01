@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using InvoicePrototype.DataAccess;
+using InvoicePrototype.Models;
 
 namespace InvoicePrototype.Controllers
 {
@@ -20,8 +21,15 @@ namespace InvoicePrototype.Controllers
         public ActionResult Index()
         {
             var items = _dataAccess.GetData();
+            var viewModel = new FullAndPartialViewModel();
+            viewModel.Items = items;
 
-            return View(items);
+            return View(viewModel);
+        }
+
+        public ActionResult InvoiceTable(string itemId){
+            var viewModel = new FullAndPartialViewModel();
+            return PartialView(viewModel);
         }
     }
 }

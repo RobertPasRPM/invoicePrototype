@@ -1,7 +1,7 @@
-﻿@model IEnumerable<InvoicePrototype.Models.Item>
+﻿@model InvoicePrototype.Models.FullAndPartialViewModel
 
 <ul class="mdc-list mdc-list--two-line" style="float:left;max-height:300px;overflow:scroll;width:30%;">
-    @foreach(var item in Model){
+    @foreach(var item in Model.Items){
         <li class="mdc-list-item" id="@item.Id"> 
             <span class="mdc-list-item__text">
                 @item.Description
@@ -12,21 +12,8 @@
         </li>
     }
 </ul>
-
-<div style="float:left;width:70%;">
-    <table style="width:100%">
-        <thead>
-            <tr>
-                <th>Item</th>
-                <th>Description</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Tax (%)</th>
-                <th>Total Tax</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+<div id="selectedItems" style="float:left;width:70%;">
+@{
+    Html.RenderPartial("InvoiceTable");   
+}
 </div>

@@ -7,5 +7,6 @@ namespace InvoicePrototype.DataAccess
     public interface IDataAccess
     {
         IEnumerable<Item> GetData();
+        Item GetItem(int itemId);
     }
 }

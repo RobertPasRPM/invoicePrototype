@@ -93,6 +93,7 @@
     <Compile Include="Models\Item.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Models\FullAndPartialViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
@@ -105,6 +106,7 @@
     <Content Include="packages.config" />
     <Content Include="Content\material-components-web.min.css" />
     <Content Include="Scripts\Invoice.js" />
+    <Content Include="Views\Home\InvoiceTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DataAccess\Mockups\MOCK_DATA-2.json" />
