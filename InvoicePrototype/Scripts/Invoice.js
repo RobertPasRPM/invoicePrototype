@@ -15,7 +15,7 @@ $(document).ready(function(){
     });
 
     $("#generateInvoice").click(function(){
-        var urlGenerate="Home/GenerateInvoice";
+        var urlGenerate = "Home/GenerateInvoice?itemIds="+itemIds;
         window.location.href=urlGenerate;
     });
 });

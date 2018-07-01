@@ -95,6 +95,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Models\FullAndPartialViewModel.cs" />
     <Compile Include="Models\RangeAndDiscount.cs" />
+    <Compile Include="Models\InvoiceResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
